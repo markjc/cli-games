@@ -98,7 +98,7 @@ class Game:
             playAgain = ''
             #### If it's the first play, greet the user, else continue the game.
             if self.firstPlay == True:
-                print(speak.greetings[random.randint(0,1)])
+                print(speak.greetings[random.randint(0, len(speak.greetings)-1)])
             sleep(1)
             
             ##obtain user's choice
