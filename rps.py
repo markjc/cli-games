@@ -3,6 +3,7 @@ import random, os, sys
 from time import sleep
 #import local modules
 import convo
+import TPrinter as printerObj
 
 
 class Game:
@@ -28,6 +29,7 @@ class Game:
 ###########################################    
     def intro(self):
         ### Clear the terminal and display the Game Title and Intro ###
+        printer = printerObj.TPrinter()
         os.system('clear')
         print('*************************************************')
         print("*                  Let's Play:                  *")
@@ -35,15 +37,10 @@ class Game:
         
         ### If this is the First play, Implement Title Animation ###
         if self.firstPlay == True:
-            sys.stdout.write('              ')
-            for char in self.gameTitle:
-                sys.stdout.write(char)
-                sys.stdout.flush()
-                sleep(0.06)
-            sys.stdout.write('             \n')
+            printer.tprint('              '+self.gameTitle+'             \n',0.02)
         else:
             print("              "+self.gameTitle+"              ")
-        print("          Wins: " + str(self.WINS) + " - Losses: " + str(self.LOSSES) + " - Ties: " + str(self.TIES))
+        printer.tprint("          Wins: " + str(self.WINS) + " - Losses: " + str(self.LOSSES) + " - Ties: " + str(self.TIES),0.01)
         print()
 
 ###########################################

@@ -15,22 +15,13 @@ the individual classes.
 import sys, os
 from time import sleep
 import rps
+import TPrinter as printerObj
 
 #####################################################
 #   Define Global Constants, Variables, and Lists   #
 #####################################################
-seconds = 0.0
 
 
-###########################################
-#              Print Animator             #
-###########################################
-def printer(phrase, seconds):
-    ####Typewritier Print, with time variable####
-     for char in phrase:
-         sys.stdout.write(char)
-         sys.stdout.flush()
-         sleep(seconds)
             
 
 ###########################################
@@ -54,6 +45,8 @@ def runGame(userInput):
 #                Main Menu                #
 ###########################################
 def mainMenu():
+    ####___________________________________________________________________######
+    printer = printerObj.TPrinter()
     userInput = 0
     while True:
         os.system('clear')
@@ -67,8 +60,8 @@ def mainMenu():
         print('#                                               #')
         print('#################################################')
         print()
-        printer('            1. Rock, Paper, Scissors    \n', 0.02)
-        printer('            2. Exit      \n',0.02)
+        printer.tprint('            1. Rock, Paper, Scissors    \n',0.02)
+        printer.tprint('            2. Exit      \n',0.02)
        
         
         
