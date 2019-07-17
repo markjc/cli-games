@@ -12,20 +12,29 @@ the individual classes.
 ###########################################
 #   Import Packages, Modules, and Games   #
 ###########################################
-import sys, os, time
+import sys, os
+from time import sleep
 import rps
 
 #####################################################
 #   Define Global Constants, Variables, and Lists   #
 #####################################################
-
-
-
-
+seconds = 0.0
 
 
 ###########################################
-#                Main Menu                #
+#              Print Animator             #
+###########################################
+def printer(phrase, seconds):
+    ####Typewritier Print, with time variable####
+     for char in phrase:
+         sys.stdout.write(char)
+         sys.stdout.flush()
+         sleep(seconds)
+            
+
+###########################################
+#                Run Games                #
 ###########################################
 def runGame(userInput):
     ### Take user input and Map it to a runnable game - then engage that class
@@ -58,8 +67,8 @@ def mainMenu():
         print('#                                               #')
         print('#################################################')
         print()
-        print('            1. Rock, Paper, Scissors    ')
-        print('            2. Exit      ')
+        printer('            1. Rock, Paper, Scissors    \n', 0.02)
+        printer('            2. Exit      \n',0.02)
        
         
         
@@ -70,7 +79,7 @@ def mainMenu():
                 userInput = int(input('->'))
             except ValueError:
                 print("Please enter a valid selection: ")
-                time.sleep(0.8)
+                sleep(0.8)
                 continue
             else:
                 break
