@@ -1,5 +1,3 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
 """
 Created on Mon Jul 15 10:03:04 2019
 Classic Games Terminal
@@ -9,24 +7,23 @@ As new games are added, this main program will be used to interact with
 the individual classes.
 @author: markjc
 """
-###########################################
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#         ----------------------          #
 #   Import Packages, Modules, and Games   #
-###########################################
+#         ----------------------          #
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#  
 import sys, os
 from time import sleep
-import rps
+import rps, ttt
 import TPrinter as printerObj
 
-#####################################################
-#   Define Global Constants, Variables, and Lists   #
-#####################################################
 
 
-            
-
-###########################################
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#         ----------------------          #
 #                Run Games                #
-###########################################
+#         ----------------------          #
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#  
 def runGame(userInput):
     ### Take user input and Map it to a runnable game - then engage that class
     if userInput == 1:
@@ -36,14 +33,22 @@ def runGame(userInput):
         newGame.gameLoop()
         mainMenu()
     elif userInput == 2:
+        #Run Game 1: Tic - Tac - Toe
+        newGame = ttt.Game()
+        newGame.intro()
+        newGame.gameLoop()
+        mainMenu()
+    elif userInput == 3:
         sys.exit()
     else:
         mainMenu()
 
 
-###########################################
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#         ----------------------          #
 #                Main Menu                #
-###########################################
+#         ----------------------          #
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#  
 def mainMenu():
     ####___________________________________________________________________######
     printer = printerObj.TPrinter()
@@ -61,7 +66,8 @@ def mainMenu():
         print('#################################################')
         print()
         printer.tprint('            1. Rock, Paper, Scissors    \n',0.02)
-        printer.tprint('            2. Exit      \n',0.02)
+        printer.tprint('            2. Tic - Tac - Toe          \n',0.02)
+        printer.tprint('            3. Exit      \n',0.02)
        
         
         
@@ -82,8 +88,10 @@ def mainMenu():
 
 
 ###########################################
-#                Main Loop                #
-###########################################
+#         ----------------------          #
+#-----||         Main Loop         ||-----#
+#         ----------------------          #
+########################################### 
 while True:
     os.system('clear')
     mainMenu()
