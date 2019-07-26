@@ -40,7 +40,7 @@ class Game:
     def intro(self):
         ### Clear the terminal and display the Game Title and Intro ###
         printer = printerObj.TPrinter()
-        os.system('clear')
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('*************************************************')
         print("*                  Let's Play:                  *")
         print('*************************************************')

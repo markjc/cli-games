@@ -54,7 +54,7 @@ def mainMenu():
     printer = printerObj.TPrinter()
     userInput = 0
     while True:
-        os.system('clear')
+        os.system('cls' if os.name == 'nt' else 'clear')
         print('#################################################')
         print('#                                               #')
         print('#   Welcome to the Classic Games Command Line   #')
@@ -93,7 +93,7 @@ def mainMenu():
 #         ----------------------          #
 ########################################### 
 while True:
-    os.system('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
     mainMenu()
     
 sys.exit()
