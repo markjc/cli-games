@@ -26,9 +26,10 @@ class Game:
         #Define class variables and constants
         self.gameTitle = 'NUMBER GUESSING GAME'
         self.firstPlay = True
-        self.startRun = True
+        self.initialRun = True
         self.WINS = 0
         self.LOSSES = 0
+        self.difficulty = {10:"1", 50:"2", 100:"3", 500:"4", 1000:"5", 1000000:"6"}
         
 
 ###########################################
@@ -57,8 +58,22 @@ class Game:
 #           Choose Difficulty             #
 #         ----------------------          #
 ###########################################    
-    def difficulty(self):
-        pass
+    def set_difficulty(self):
+        self.initialRun = False
+        print()
+        print("Please Choose a Number Difficulty: ")
+        print("1. Super Easy [1-10]")
+        print("2. Easy [1-50]")
+        print("3. Normal [1-100]")
+        print("4. Hard [1-500]")
+        print("5. Very Hard [1-1000]")
+        print("6. Super Epic Crazy Hard [1-1,000,000]")
+        userInput = input("--> ")
+        while userInput not in self.difficulty:
+            print("Please enter a valid choice: 1-6")
+            userInput = input("--> ")
+        return self.difficulty[userInput]
+        
 
 ###########################################
 #         ----------------------          #
@@ -68,9 +83,11 @@ class Game:
        
     def gameLoop(self):
         ###define options for input and computer selection, create conversational response object, and alter firstPlay boolean
-        options = ["rock","paper","scissors"]
+        
         speak = convo.Convo()
         self.firstPlay = False
+        if self.initialRun:
+            limit = self.set_difficulty()
         while True:
             #Play the Game.
             playAgain = ''
