@@ -1,15 +1,19 @@
-'''
-ATTENTION:
-    
-This File is a Work in Progress to implement the NUmber Guessing Game.
-It was derived from the template of another class and still contains elements of that code
-This notice will be removed upon completion of the task. 
-'''
+"""
+Initial Release of Number Guessing Game complete 7/29
+Additional Features to add in future versions:
 
-#import built in modules
+Least number of guesses leaderboard.
+Add Limited guesses mode. 
+"""
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#         ----------------------          #
+#       Import Packages, and Modules      #
+#         ----------------------          #
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 import random, os, sys
 from time import sleep
-#import local modules
+
 import convo
 import TPrinter as printerObj
 
@@ -27,8 +31,6 @@ class Game:
         self.gameTitle = 'NUMBER GUESSING GAME'
         self.firstPlay = True
         self.initialRun = True
-        self.WINS = 0
-        self.LOSSES = 0
         self.difficulty = {"1": 10, "2": 50, "3": 100, "4": 500, "5": 1000, "6": 1000000}
         
 
@@ -50,7 +52,6 @@ class Game:
             printer.tprint('              '+self.gameTitle+'             \n',0.02)
         else:
             print("              "+self.gameTitle+"              ")
-        #printer.tprint("          Wins: " + str(self.WINS) + " - Losses: " + str(self.LOSSES) + " - Ties: " + str(self.TIES),0.01)
         print()
 
 ###########################################
@@ -69,15 +70,15 @@ class Game:
         print("5. Very Hard [1-1000]")
         print("6. Super Epic Crazy Hard [1-1,000,000]")
         userInput = input("--> ")
-        while int(userInput) not in range(1, 6):
+        while int(userInput) not in range(1, 7):
             print("Please enter a valid choice: 1-6")
             userInput = input("--> ")
-        return self.difficulty[int(userInput)]
+        return self.difficulty[userInput]
         
 
 ###########################################
 #         ----------------------          #
-#             Main Game Loop              #
+#-----||      Main Game Loop       ||-----#
 #         ----------------------          #
 ########################################### 
        
@@ -87,9 +88,11 @@ class Game:
         
         speak = convo.Convo()
         self.firstPlay = False
-        if self.initialRun:
-            limit = self.set_difficulty()
+
         while True:
+            # If it is the initial play of the game, allow the user to select the Difficulty
+            if self.initialRun:
+                limit = self.set_difficulty()
             #Play the Game.
             playAgain = ''
             #### If it's the first play, greet the user, else continue the game.
@@ -112,11 +115,9 @@ class Game:
                     print("Nope, The number is Lower.")
                 else:
                     print("Congratulations! You Guessed it!")
-                    self.initialRun = False
+                    self.initialRun = True
                     break
 
-            
-            
             #__________________________________________________________
 
             
