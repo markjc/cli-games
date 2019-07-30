@@ -14,7 +14,7 @@ the individual classes.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#  
 import sys, os
 from time import sleep
-import rps, ttt
+import rps, ttt, ngg
 import TPrinter as printerObj
 
 
@@ -33,12 +33,18 @@ def runGame(userInput):
         newGame.gameLoop()
         mainMenu()
     elif userInput == 2:
-        #Run Game 1: Tic - Tac - Toe
+        #Run Game 2: Tic - Tac - Toe
         newGame = ttt.Game()
         newGame.intro()
         newGame.gameLoop()
         mainMenu()
     elif userInput == 3:
+        #Run Game 3: Number Guessing Game
+        newGame = ngg.Game()
+        newGame.intro()
+        newGame.gameLoop()
+        mainMenu()
+    elif userInput == 4:
         sys.exit()
     else:
         mainMenu()
@@ -67,7 +73,8 @@ def mainMenu():
         print()
         printer.tprint('            1. Rock, Paper, Scissors    \n',0.02)
         printer.tprint('            2. Tic - Tac - Toe          \n',0.02)
-        printer.tprint('            3. Exit      \n',0.02)
+        printer.tprint('            3. Number Guessing Game          \n', 0.02)
+        printer.tprint('            4. Exit      \n',0.02)
        
         
         
